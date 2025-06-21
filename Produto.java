@@ -51,15 +51,6 @@ public class Produto {
     {
         return preco;
     }
-
-    public void Exibir()
-    {
-        System.out.println("ID: " + id);
-        System.out.println("Nome: " + nome);
-        System.out.println("Descrição: " + descricao);
-        System.out.println("Preço: R$" + preco);
-        System.out.println("-----------------------");
-    }
 }
 
 

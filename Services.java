@@ -1,19 +1,31 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
 public class Services {
-    
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static String readLine() throws java.io.IOException {
-        String linha = "";
-        int c;
-        while ((c = System.in.read()) != -1) {
-            if (c == '\n' || c == '\r') break;
-            linha += (char) c;
+    public static String readLine() throws IOException {
+        return reader.readLine().trim();
+    }
+
+    public static int readInt() throws IOException {
+        while (true) {
+            String line = readLine();
+            try {
+                return Integer.parseInt(line);
+            } catch (NumberFormatException e) {
+                System.out.print("Entrada inválida. Digite um número inteiro: ");
+            }
         }
-        return linha.trim();
     }
-    
 
-    public static int readInt() throws java.io.IOException {
-        return Integer.parseInt(readLine());
+    public static Produto getProductById(int id, Produto[] produtos) {
+        for (Produto p : produtos) {
+            if (p != null && p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
     }
-    
 }
