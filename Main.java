@@ -1,18 +1,19 @@
+import java.util.ArrayList;
+
 public class Main {
    public static void main(String[] args) throws java.io.IOException {
 
-        Produto[] produtos = {
-            new Produto(1, "Arroz", 20.0, "Pacote 5kg"),
-            new Produto(2, "Feijão", 10.0, "Pacote 1kg"),
-            new Produto(3, "Macarrão", 8.5, "Pacote 500g"),
-            new Produto(4, "Açúcar", 5.0, "Pacote 1kg"),
-            new Produto(5, "Sal", 3.0, "Pacote 1kg"),
-            new Produto(6, "Óleo de soja", 7.5, "Garrafa 900ml"),
-            new Produto(7, "Leite", 4.2, "Caixa 1L"),
-            new Produto(8, "Café", 15.0, "Pacote 500g"),
-            new Produto(9, "Pão", 6.0, "Pacote 400g"),
-            new Produto(10, "Manteiga", 12.0, "Pote 200g")
-        };
+        ArrayList<Produto> produtos = new ArrayList<>();
+        produtos.add(new Produto(1, "Arroz", 20.0, "Pacote 5kg"));
+        produtos.add(new Produto(2, "Feijão", 10.0, "Pacote 1kg"));
+        produtos.add(new Produto(3, "Macarrão", 8.5, "Pacote 500g"));
+        produtos.add(new Produto(4, "Açúcar", 5.0, "Pacote 1kg"));
+        produtos.add(new Produto(5, "Sal", 3.0, "Pacote 1kg"));
+        produtos.add(new Produto(6, "Óleo de soja", 7.5, "Garrafa 900ml"));
+        produtos.add(new Produto(7, "Leite", 4.2, "Caixa 1L"));
+        produtos.add(new Produto(8, "Café", 15.0, "Pacote 500g"));
+        produtos.add(new Produto(9, "Pão", 6.0, "Pacote 400g"));
+        produtos.add(new Produto(10, "Manteiga", 12.0, "Pote 200g"));
 
         int escolha = 0;
 
@@ -39,9 +40,31 @@ public class Main {
                 } else {
                     System.out.println("Produto não encontrado.");
                 }
-            }
+            } else if (escolha == 2) {
 
-            // Outras opções para implementar...
+                int ultimoId = 0;
+
+                for (Produto p : produtos) {
+                    if (p != null && p.getId() > ultimoId) {
+                        ultimoId = p.getId();
+                    }
+                }
+
+                int novoId = ultimoId + 1;
+        
+                System.out.println("Nome do produto:");
+                String novoNome = Services.readLine();
+
+                System.out.println("Descricao:");
+                String novaDesc = Services.readLine();
+
+                System.out.println("Preço:");
+                double novoPreco = Services.readDouble();
+
+                Produto novoProduto = new Produto(novoId, novoNome, novoPreco, novaDesc);
+
+                produtos.add(novoProduto);
+            }
 
         } while (escolha != 0);
 
